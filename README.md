@@ -1,70 +1,60 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CodeLab
 
-## Available Scripts
+## Part 1: VSCode
 
-In the project directory, you can run:
+1. Install **Prettier** plugin
 
-### `npm start`
+<img align="center" src="img/1.PNG">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Install **Eslint** plugin
 
-### `npm test`
+<img align="center" src="img/2.PNG">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Part 2: Eslint
+1. Open your package.json, go down there on the **eslintConfig** and leave it as the next is:
+	```json
+	"eslintConfig": {
+		"extends": [
+			"eslint:recommended",
+			"react-app",
+			"react-app/jest",
+			"prettier"
+		]
+	},
+2. run ***npm i -D eslint***
+3. add this 2 new scripts to the **package.json**
+	```json
+	"lint": "eslint --ext .js,.jsx .",
+	"lint:fix": "npm run lint -- --fix"
+	 ```
+4. If you installed **eslint** plugin the eslint errors will popup when you hover on warning messages on your code, for instance:
+<img align="center" src="img/3.PNG">
 
-### `npm run build`
+## Part 3: Prettier
+1. go to your package.json
+2. add a new key down below **eslintConfig**, like this:
+    ```json
+    "prettier": {}
+    ```
+3. Go to ***file/preferences/settings*** another alternative is pressing on windows **ctrl + ,**
+4. On the User configuration open ***Text Editor / Formatting***
+5. Click on **Format On Save** checkbox.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Part 4: Husky
+1. run ***npm i -D husky***
+2. run ***npm set-script prepare "husky install"***
+3. run ***npm run prepare***
+4. run ***npm i -D prettier***
+5. run ***npm set-script format "prettier --write ."***
+6. run ***npx husky add .husky/pre-commit "npm run lint:fix && npm format"***
+7. Now, every time you try to run a commit it will validate there are no eslint **Errors** ( Not warnings ), and then it will format every file on your project using our prettier config.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Autor
+[Juan Camilo Posso Guevara](https://github.com/JCPosso)
+## Derechos de Autor
+**©** _Juan Camilo Posso G., Escuela Colombiana de Ingeniería Julio Garavito._
+## Licencia
+Licencia bajo  GNU General Public License.
